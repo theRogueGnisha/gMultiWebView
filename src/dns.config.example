@@ -1,0 +1,11 @@
+# App-wide DNS/proxy for gMultiWebView (all browser panels use this).
+# Copy this file to dns.config and edit as needed.
+# If dns.config is missing, the app uses Comodo Secure DNS by default.
+
+# DNS-over-HTTPS (DoH) – all DNS lookups use this provider.
+# Default: Comodo Secure DNS (8.26.56.26 / 8.20.247.20 – security, ad blocking, malware/phishing filtering).
+DoH=https://securedns.dnsbycomodo.com/dns-query
+
+# Proxy – all browser traffic goes through this proxy (proxy can use its own DNS).
+# Examples:  Proxy=127.0.0.1:8080   or   Proxy=proxy.example.com:3128
+# Proxy=

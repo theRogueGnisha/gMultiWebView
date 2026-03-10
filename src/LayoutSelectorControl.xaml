@@ -1,0 +1,114 @@
+<UserControl x:Class="gMultiWebView.LayoutSelectorControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Border Background="#252526" BorderBrush="#444" BorderThickness="1" CornerRadius="4" Padding="8"
+          MinWidth="220">
+    <StackPanel>
+      <!-- Layout mode: 6-panel vs 2x2 -->
+      <TextBlock Text="Layout" Foreground="#aaa" FontSize="10" Margin="0,0,0,4"/>
+      <Grid Height="40" Margin="0,0,0,8">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="6"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border x:Name="BtnSixPanel" Grid.Column="0" Background="#2d2d30" CornerRadius="2" Cursor="Hand"
+                MouseLeftButtonDown="BtnSixPanel_Click" ToolTip="6-panel (Focus + 5 monitors)">
+          <Grid Margin="3">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Grid.Column="0" Margin="0,0,1,1" Background="#404040"/>
+            <Border Grid.Row="0" Grid.Column="1" Margin="1,0,0,1" Background="#505050"/>
+            <Border Grid.Row="1" Grid.Column="0" Margin="0,1,1,1" Background="#404040"/>
+            <Border Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="1,1,0,0" Background="#0e639c"/>
+            <Border Grid.Row="2" Grid.Column="0" Margin="0,1,1,0" Background="#404040"/>
+          </Grid>
+        </Border>
+        <Border x:Name="Btn2x2" Grid.Column="2" Background="#2d2d30" CornerRadius="2" Cursor="Hand"
+                MouseLeftButtonDown="Btn2x2_Click" ToolTip="2×2 (4 equal windows)">
+          <Grid Margin="3">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Grid.Column="0" Margin="0,0,1,1" Background="#505050"/>
+            <Border Grid.Row="0" Grid.Column="1" Margin="1,0,0,1" Background="#505050"/>
+            <Border Grid.Row="1" Grid.Column="0" Margin="0,1,1,0" Background="#505050"/>
+            <Border Grid.Row="1" Grid.Column="1" Margin="1,1,0,0" Background="#505050"/>
+          </Grid>
+        </Border>
+      </Grid>
+      <!-- Left column merge: 4 graphical options (only when 6-panel) -->
+      <TextBlock x:Name="LeftColLabel" Text="Left column merge" Foreground="#aaa" FontSize="10" Margin="0,0,0,4"/>
+      <Grid x:Name="MergeOptionsPanel" Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="4"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="4"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="4"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!-- Split: 3 boxes -->
+        <Border x:Name="MergeSplit" Grid.Column="0" Background="#2d2d30" CornerRadius="2" Cursor="Hand" Height="48"
+                MouseLeftButtonDown="MergeOption_Click" ToolTip="Split (1 + 4 + 5)">
+          <Grid Margin="2">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="1"/>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="1"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Background="#505050" CornerRadius="1"/>
+            <Border Grid.Row="2" Background="#505050" CornerRadius="1"/>
+            <Border Grid.Row="4" Background="#505050" CornerRadius="1"/>
+          </Grid>
+        </Border>
+        <!-- Top 2: one tall top, one bottom -->
+        <Border x:Name="MergeTopTwo" Grid.Column="2" Background="#2d2d30" CornerRadius="2" Cursor="Hand" Height="48"
+                MouseLeftButtonDown="MergeOption_Click" ToolTip="Merge top two (1 + 4)">
+          <Grid Margin="2">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="2*"/>
+              <RowDefinition Height="1"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Background="#505050" CornerRadius="1"/>
+            <Border Grid.Row="2" Background="#505050" CornerRadius="1"/>
+          </Grid>
+        </Border>
+        <!-- Bottom 2: one top, one tall bottom -->
+        <Border x:Name="MergeBottomTwo" Grid.Column="4" Background="#2d2d30" CornerRadius="2" Cursor="Hand" Height="48"
+                MouseLeftButtonDown="MergeOption_Click" ToolTip="Merge bottom two (4 + 5)">
+          <Grid Margin="2">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="1"/>
+              <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Background="#505050" CornerRadius="1"/>
+            <Border Grid.Row="2" Background="#505050" CornerRadius="1"/>
+          </Grid>
+        </Border>
+        <!-- All 3: one tall -->
+        <Border x:Name="MergeAllThree" Grid.Column="6" Background="#2d2d30" CornerRadius="2" Cursor="Hand" Height="48"
+                MouseLeftButtonDown="MergeOption_Click" ToolTip="Merge all three (1 + 4 + 5)">
+          <Border Margin="2" Background="#505050" CornerRadius="1"/>
+        </Border>
+      </Grid>
+    </StackPanel>
+  </Border>
+</UserControl>
